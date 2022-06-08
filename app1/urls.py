@@ -352,6 +352,10 @@ urlpatterns = [
     re_path(r'^cash_flow_sort$',views.cash_flow_sort,name='cash_flow_sort'),
 
 
-
-    re_path(r'^materialmaster',views.materialmaster,name='materialmaster'),
+    re_path(r'^materialmasterhome$',views.materialmasterhome,name='materialmasterhome'),
+    re_path(r'^materialcreate$',views.materialcreate,name='materialcreate'),
+    re_path(r'^materialview$',views.materialview,name='materialview'),
+    
+    
+    
 ]

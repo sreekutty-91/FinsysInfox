@@ -1,10 +1,7 @@
 {% extends 'app1/base.html' %}
 {% block body %}
     {% load static %}
-    <body>
-			{% include "app1/base.html" %}
-          <br>
-          <br>
+    
             <div class="container mt-5">
                 <h1 class="alert alert-success text-center">
                       RAWMATERIAL DETAILS
@@ -12,14 +9,14 @@
                 <div class="row">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-6">
-                        <form method="post" action="#" enctype="multipart/form-data">
+                        <form method="post" action="{% url 'materialcreate' %}" enctype="multipart/form-data">
                             {% csrf_token %}
                             <input type="text" name="productname" class="form-control mt-3" placeholder="Productname">
                             <input type="number" name="sku" class="form-control mt-3" placeholder="SKU">
                             <input type="number" name="hsn" class="form-control mt-3" placeholder="HSN">
                             <input type="number" name="quantity" class="form-control mt-3" placeholder="Quantity">
                             <input type="date" name="manufactuaring_date" class="form-control mt-3" placeholder="Manufactuaring Date">  
-                           <input type="date" name="expiry_date" class="form-control mt-3" placeholder="Expiry Date">  
+                            <input type="date" name="expiry_date" class="form-control mt-3" placeholder="Expiry Date">  
                             <button type="submit" class="btn btn-success mt-3 w-100">CREATE</button>
                         </form>
                     </div>
@@ -27,3 +24,8 @@
                 </div>
             </div>
 {% endblock %}            
+
+
+
+    
+        

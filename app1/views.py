@@ -2,10 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from datetime import datetime, date, timedelta
-from .models import advancepayment, paydowncreditcard, salesrecpts, timeact, timeactsale, Cheqs, suplrcredit, addac, \
-    bills, invoice, expences, payment, credit, delayedcharge, estimate, service, noninventory, bundle, employee, \
-    payslip, inventory, customer, supplier, company, accounts, ProductModel, ItemModel, accountype, \
-    expenseaccount, incomeaccount, accounts1, recon1, recordpay, addtax1, bankstatement, customize
+from .models import *
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
 from django.db.models import Sum, Q
@@ -32625,14 +32622,16 @@ def cash_flow_sort(request):
         
         return render(request, 'app1/cash_flow_sort.html', context)
 
-def materialmaster(request):
+def materialmasterhome(request):
     
-    return render(request,'materialmasterbasepage.html')
+    return render(request,'app1/materialmasterbasepage.html')
+
+# def  viewmaterialcreate(request):
+    
+#     return render(request,'app1/materialcreate.html')
 
 
-
-
-def createrawmaterial(request):
+def materialcreate(request):
     if request.method == 'POST':
         productname=request.POST['productname']
         sku=request.POST['sku']
@@ -32642,4 +32641,10 @@ def createrawmaterial(request):
         rdata = rawmaterials(productname=productname,sku=sku,hsn=hsn,manufactuaring_date=manufactuaring_date,expiry_date=expiry_date)
         rdata.save()
         
-    return render(request,'materialcreate.html')
+        return redirect('materialview')
+        
+    return render(request,'app1/addmaterial.html')
+
+def materialview(request):
+   mdata = rawmaterials.objects.all()
+   return render(request,'app1/viewmaterial.html',{'mdata':mdata})    
